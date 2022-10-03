@@ -26,4 +26,4 @@ Route::get('/register', function () {
 });
 
 Route::get('/home', [PagesController::class, 'home']);
-Route::get('/register', [RegisterController::class, 'getregister']);
+Route::get('/register/{name}', [RegisterController::class, 'getregister'])->name('register');
