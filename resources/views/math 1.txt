@@ -1,0 +1,16 @@
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+
+int main(){
+int 
+int op;
+cout<<"calculate and display the user body mass index";
+
+
+
+
+
+
+} 
