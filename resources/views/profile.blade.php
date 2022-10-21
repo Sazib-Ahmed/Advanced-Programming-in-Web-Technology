@@ -1,15 +1,23 @@
 @extends('layouts.app')
 @section('title')
-Register
+Profile
 @endsection
 @section('content')
+
 <center> 
-    <form action="/getregister" method="POST">
+    @if (session()->has('status'))
+        Update was successful
+        <br>
+    @else
+    @endif
+
+    User ID: {{session()->get('id')}}
+    <form action="/getupdate" method="POST">
             {{csrf_field()}}
         <table>
             <tr>
                 <td>Name:</td>
-                <td><input type="text" name="name" value="{{old('name')}}"></td>
+                <td><input type="text" name="name" value="{{session()->get('name')}}"></td>
                 <td>@if ($errors->has('name'))
                 {{ $errors->first('name') }}
                 @endif</td>
@@ -17,7 +25,7 @@ Register
 
             <tr>
                 <td>Age</td>
-                <td><input type="number" name="age" value="{{old('age')}}"> </td>
+                <td><input type="number" name="age" value="{{session()->get('age')}}"> </td>
                 <td>@if ($errors->has('age'))
                 {{ $errors->first('age') }}
                 @endif</td>
@@ -26,7 +34,7 @@ Register
 
             <tr>
                 <td>Mobile No.</td>
-                <td><input type="number" name="mobile" value="{{old('mobile')}}"> </td>
+                <td><input type="number" name="mobile" value="{{session()->get('mobile')}}"> </td>
                 <td>@if ($errors->has('mobile'))
                 {{ $errors->first('mobile') }}
                 @endif</td>
@@ -34,18 +42,16 @@ Register
 
             <tr>
                 <td>Email</td>
-                <td><input type="text" name="email" value="{{old('email')}}"> </td>
+                <td><input type="text" name="email" value="{{session()->get('email')}}"> </td>
                 <td>@if ($errors->has('email'))
                 {{ $errors->first('email') }}
                 @endif</td>
             </tr>
 
-            
-
             <tr>
                 <td>Address</td>
                 <td>
-                <textarea placeholder='Enter address...' name="address" rows="4" cols="25">{{old('address')}}</textarea>
+                <textarea placeholder='Enter address...' name="address" rows="4" cols="25" >{{session()->get('address')}}</textarea>
                 </td>
                 <td>@if ($errors->has('address'))
                 {{ $errors->first('address') }}

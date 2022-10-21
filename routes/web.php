@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UpdateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +20,25 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/index', function () {
     return view('Home');
 });
-Route::get('/register', function () {
-    return view('register');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
+
 
 Route::get('/home', [PagesController::class, 'home']);
-Route::get('/register', [RegisterController::class, 'getregister']);
+
+
+Route::get('/registration', [RegisterController::class, 'register']);
+Route::post('/getregister', [RegisterController::class, 'registration']);
+
+Route::get('/gotologin', [LoginController::class, 'login']);
+Route::post('/profile', [LoginController::class, 'checklogin']);
+
+Route::post('/profile', [UpdateController::class, 'profile']);
+//Route::post('/updated_profile', [UpdateController::class, 'profile']);
+Route::post('/getupdate', [UpdateController::class, 'update']);
+?>
