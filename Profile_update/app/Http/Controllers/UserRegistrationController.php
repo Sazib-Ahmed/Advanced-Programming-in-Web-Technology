@@ -23,7 +23,7 @@ class UserRegistrationController extends Controller
             'u_name'=>"required|string|max:100|regex:/^([a-zA-Z',.-]+( [a-zA-Z',.-]+)*)$/",
             'u_dob'=>'required|date',
             'u_phone' => 'required|digits:11|unique:users,u_phone|regex:/^(01[3456789][0-9]{8})$/',
-            'u_email'=>'required|email|max:50|unique:users,u_email',
+            'u_email'=>'required|email|max:100|unique:users,u_email',
             'u_address1'=>'required|string|max:100',
             'u_address2'=>'sometimes|nullable|string|max:100',
             'u_password'=>'required|min:8|max:100|regex:/^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,})$/', 

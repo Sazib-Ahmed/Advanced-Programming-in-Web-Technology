@@ -2,9 +2,14 @@
 @section('title')
 User Home
 @endsection
+
 @section('body')
-<body id="userloginbody">
-@endsection
+@if (Cookie::get('background')!== null)
+<body id="{{Cookie::get('background')}}">
+@else
+<body id="backgrounddefault">
+@endif
+
 @section('content')
 
 <h1>Home</h>

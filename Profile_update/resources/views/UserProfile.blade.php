@@ -2,10 +2,13 @@
 @section('title')
 Profile
 @endsection
-@section('body')
-<body id="userloginbody">
 
-@endsection
+@section('body')
+@if (Cookie::get('background')!== null)
+<body id="{{Cookie::get('background')}}">
+@else
+<body id="backgrounddefault">
+@endif
 
 @section('content')
     <form action="/user/profile/update" class="box" method="POST" enctype="multipart/form-data">

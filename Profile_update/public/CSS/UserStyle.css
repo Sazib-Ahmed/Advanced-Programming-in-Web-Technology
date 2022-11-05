@@ -147,12 +147,44 @@
     font-family: sans-serif;
 }
 
-#gmaemanagementbody {
+#backgrounddefault {
     margin: 0;
     padding: 0;
-    color: #ddd;
-    background-image: url('/Images/earth1.jpg');
     font-family: sans-serif;
+    background: url('/Images/backgrounddefault.gif');
+    background-size: cover;
+}
+
+#background1 {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('/Images/background1.gif');
+    background-size: cover;
+}
+
+#background2 {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('/Images/background2.gif');
+    background-size: cover;
+}
+
+#background3 {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('/Images/background3.gif');
+    background-size: cover;
+}
+
+#userloginbody {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('/Images/UserLogo.gif');
+    background-size: cover;
 }
 
 .registrationbody input[type="text"],

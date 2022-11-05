@@ -5,6 +5,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\ProfileUpdateController;
+use App\Http\Controllers\BackgroundController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,13 @@ Route::post('/user/profile/update', [ProfileUpdateController::class, 'getProfile
 
 Route::get('/logout', [UserLoginController::class,'getLogout']);
 Route::get('/user/logout', [UserLoginController::class,'getLogout']);
+
+Route::get('/background1', [BackgroundController::class,'getBackground1']);
+Route::get('/background2', [BackgroundController::class,'getBackground2']);
+Route::get('/background3', [BackgroundController::class,'getBackground3']);
+Route::get('/backgrounddefault', [BackgroundController::class,'getBackgroundDefault']);
+
+
 
 
 

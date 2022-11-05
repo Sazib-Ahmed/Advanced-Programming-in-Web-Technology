@@ -2,8 +2,11 @@
 @section('title','Login')
 
 @section('body')
-<body id="userloginbody">
-@endsection
+@if (Cookie::get('background')!== null)
+<body id="{{Cookie::get('background')}}">
+@else
+<body id="backgrounddefault">
+@endif
 
 @section('content')
 {{session('registration_message')}}
