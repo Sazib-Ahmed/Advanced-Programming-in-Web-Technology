@@ -17,12 +17,13 @@ Profile
             @if (session()->get('u_profile_pic')== null)
             <img src="{{asset('/storage/ProfilePictures/avatar.gif')}}" class="avatar">
             
-@else
-<img src="{{asset('/storage/'.session()->get('u_profile_pic'))}}" class="avatar">
-@endif
+                @else
+                <img src="{{asset('/storage/ProfilePictures/'.session()->get('u_profile_pic'))}}" class="avatar">
+                @endif
 
             
             <br><br><br><br><br>
+            <h3> {{session()->get('update_message')}}</h3>
             <h1>Profile</h1>
                 
                <h2>ID: {{session()->get('u_id')}}</h2>

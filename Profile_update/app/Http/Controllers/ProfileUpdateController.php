@@ -30,7 +30,9 @@ class ProfileUpdateController extends Controller
             
             //'u_phone' => "sometimes|nullable|digits:11|unique:users,u_phone".$u_id."|regex:/^(01[3456789][0-9]{8})$/",
             //'u_email' => ['required','email', Rule::unique('users')->ignore($u_id)],
-            //'u_email'=>'sometimes|nullable|email|max:50|unique:users,u_email'.$u_id,
+            //u_email'=>'sometimes|nullable|email|max:50|unique:users,u_email'.$u_id,
+            'u_phone' => "sometimes|nullable|digits:11|regex:/^(01[3456789][0-9]{8})$/",
+            'u_email'=>'sometimes|nullable|email|max:50',
 
             'u_address1'=>'sometimes|nullable|string|max:100',
             'u_address2'=>'sometimes|nullable|string|max:100',
@@ -129,27 +131,23 @@ class ProfileUpdateController extends Controller
 
         }
         if($request->hasFile('u_profile_pic')) {
-            $path = $request->file('u_profile_pic')->store('ProfilePictures');
-            $user->u_profile_pic=$path;
-            Storage::delete(session()->get('u_profile_pic'));
-            $request->session()->put("u_profile_pic",$path);
+            // $path = $request->file('u_profile_pic')->store('public/storage/ProfilePictures',$request->u_email.'.gif');
+            // $user->u_profile_pic=$path;
+             Storage::delete('public/ProfilePictures'.session()->get('u_profile_pic'));
+            // $request->session()->put("u_profile_pic",$path);
+
+            $destination_path = 'public/ProfilePictures';
+            //$image=$request->hasFile('u_profile_pic');
+            $image_name= $request->file('u_profile_pic')->getClientOriginalName();
+            $path = $request->file('u_profile_pic')->storeAs($destination_path,$image_name);
+            $user->u_profile_pic=$image_name;
+            $request->session()->put("u_profile_pic",$image_name);
         }
 
-        // $output="<h1>Submitted<h1>";
-        // $output="Wrong Info";
-        // $output.="Name: ".$request->u_name;
-        // $output.="Date of Birth: ".$request->u_dob;
-        // $output.="Phone: ".$request->u_phone;
-        // $output.="Email: ".$request->u_email;
-        // $output.="Address 1: ".$request->u_address1;
-        // $output.="Address 2: ".$request->u_address2;
-        // $output.="Password: ".$request->u_password;
-        // $output.="Profile Picture: ".$path ;
-
-        // return $output;
 
         $user->save();
-        return redirect('user/profile');
+        return redirect('user/profile')->with('update_message','Successfully Updated');
+        //return redirect('user/login')->with('registration_message','Registration Successful');
 
     }
 

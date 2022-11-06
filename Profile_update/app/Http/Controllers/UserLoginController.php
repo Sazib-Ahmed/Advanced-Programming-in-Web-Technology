@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Models\Feedbacks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -91,8 +92,10 @@ class UserLoginController extends Controller
                 $request->session()->put("u_profile_pic",$user->u_profile_pic);
                 $request->session()->put("created_at",$user->created_at);
                 $request->session()->put("updated_at",$user->updated_at);
+
+                
             
-                return redirect('/user/home');
+                return redirect('/user/carbonfootprint');
 
             }
             else{

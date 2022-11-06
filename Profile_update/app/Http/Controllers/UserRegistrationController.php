@@ -99,8 +99,11 @@ class UserRegistrationController extends Controller
         $usetable->u_password=$request->u_password;
 
         if($request->hasFile('u_profile_pic')) {
-            $path = $request->file('u_profile_pic')->store('ProfilePictures');
-            $usetable->u_profile_pic=$path;
+            $destination_path = 'public/ProfilePictures';
+            //$image=$request->hasFile('u_profile_pic');
+            $image_name= $request->file('u_profile_pic')->getClientOriginalName();
+            $path = $request->file('u_profile_pic')->storeAs($destination_path,$image_name);
+            $usetable->u_profile_pic=$image_name;
         }
         
         $usetable->save();

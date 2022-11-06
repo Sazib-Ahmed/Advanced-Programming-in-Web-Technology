@@ -15,8 +15,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('u_id',10);
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
             $table->string('u_name', 100);
             $table->date('u_dob');
             $table->string('u_age', 3);
@@ -27,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('u_profile_pic', 200)->nullable();
             $table->string('u_password', 100);
             $table->rememberToken();
+            $table->timestamps();
         });
     }
 

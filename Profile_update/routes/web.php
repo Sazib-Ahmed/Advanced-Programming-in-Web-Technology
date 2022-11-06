@@ -7,6 +7,9 @@ use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\ProfileUpdateController;
 use App\Http\Controllers\BackgroundController;
 use App\Http\Controllers\UserFeedbackController;
+use App\Http\Controllers\CarbonFootprintController;
+use App\Http\Controllers\GuidesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,10 +49,10 @@ Route::get('/user/home', [UserLoginController::class, 'getUserHome'])->middlewar
 Route::get('/user/profile', [ProfileUpdateController::class, 'getprofile'])->middleware('checkSession');
 Route::get('/profile', [ProfileUpdateController::class, 'getProfile'])->middleware('checkSession');
 //Route::post('/user/profile/update', [ProfileUpdateController::class, 'getProfileUpdate'])->middleware('checkSession');
-Route::post('/user/profile/update', [ProfileUpdateController::class, 'getProfileUpdate']);
+Route::post('/user/profile/update', [ProfileUpdateController::class, 'getProfileUpdate'])->middleware('checkSession');
 
-Route::get('/logout', [UserLoginController::class,'getLogout']);
-Route::get('/user/logout', [UserLoginController::class,'getLogout']);
+Route::get('/logout', [UserLoginController::class,'getLogout'])->middleware('checkSession');
+Route::get('/user/logout', [UserLoginController::class,'getLogout'])->middleware('checkSession');
 
 Route::get('/background1', [BackgroundController::class,'getBackground1']);
 Route::get('/background2', [BackgroundController::class,'getBackground2']);
@@ -57,8 +60,21 @@ Route::get('/background3', [BackgroundController::class,'getBackground3']);
 Route::get('/backgrounddefault', [BackgroundController::class,'getBackgroundDefault']);
 
 
-Route::get('/user/feedback', [UserFeedbackController::class,'getFeedback']);
-Route::post('/user/sendFeedback', [UserFeedbackController::class,'getSendFeedback']);
+Route::get('/user/feedback', [UserFeedbackController::class,'getFeedback'])->middleware('checkSession');
+Route::post('/sendFeedback', [UserFeedbackController::class,'getSendFeedback'])->middleware('checkSession');
+Route::post('/user/sendFeedback', [UserFeedbackController::class,'getSendFeedback'])->middleware('checkSession');
+
+Route::get('/user/carbonfootprint', [CarbonFootprintController::class,'getCarbonFootprint'])->middleware('checkSession');
+Route::get('/user/carbonfootprintofelectricity', [CarbonFootprintController::class,'getElectricity'])->middleware('checkSession');
+Route::get('/user/carbonfootprintoffood', [CarbonFootprintController::class,'getFood'])->middleware('checkSession');
+Route::get('/user/carbonfootprintofhousehold', [CarbonFootprintController::class,'getHousehold'])->middleware('checkSession');
+Route::get('/user/carbonfootprintoftravel', [CarbonFootprintController::class,'getTravel'])->middleware('checkSession');
+Route::post('/user/carbonfootprintofelectricity/calculate', [CarbonFootprintController::class,'getElectricityCalculate'])->middleware('checkSession');
+
+Route::get('/user/guides', [GuidesController::class,'getGuides'])->middleware('checkSession');
+
+
+
 
 
 

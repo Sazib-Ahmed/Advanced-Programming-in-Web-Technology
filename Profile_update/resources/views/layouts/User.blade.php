@@ -16,7 +16,8 @@
   <button class="dropbtn">Choose Background</button>
   <div class="dropdown-content">
   <div class="dropdownbutton">
-  <form action="backgrounddefault" method="GET" enctype="multipart/form-data">
+    <table>
+  <form action="/backgrounddefault" method="GET" enctype="multipart/form-data">
             {{csrf_field()}}
   <input name="backgrounddefault" type="submit" value="Default Background"><br>
 </form>
@@ -33,7 +34,7 @@
             {{csrf_field()}}
   <input name="background3" type="submit" value="Background  3"><br>
 </form>
-
+</table>
 
 
   
