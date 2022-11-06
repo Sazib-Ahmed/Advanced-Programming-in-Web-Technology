@@ -14,12 +14,14 @@ class CreateFeedbacksTable extends Migration
     public function up()
     {
         Schema::create('feedbacks', function (Blueprint $table) {
-            $table->bigIncrements('f_id',10);
-            $table->string('f_category', 50);
-            $table->text('f_feedback', 200);
+            $table->bigIncrements('f_id',100);
+            $table->text('f_title', 1000);
+            $table->string('u_id', 100);
+            $table->text('f_feedback', 1000);
+            $table->text('f_response', 1000);
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->integer('u_id', 10);
+
         });
     }
 

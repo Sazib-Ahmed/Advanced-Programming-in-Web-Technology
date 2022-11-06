@@ -11,6 +11,7 @@
 </div>
         <div class="sticky">
         <div class="topnav">
+        <a href="feedback" id="logout"> Feedback</a>
         <a href="logout" id="logout"> Logout</a>
     <a href="profile" > Profile</a>
       

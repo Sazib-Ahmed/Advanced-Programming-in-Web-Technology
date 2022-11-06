@@ -13,8 +13,16 @@ Profile
 @section('content')
     <form action="/user/profile/update" class="box" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
-            <img src="/storage/{{session()->get('u_profile_pic')}}" class="avatar">
-            <br>
+
+            @if (session()->get('u_profile_pic')== null)
+            <img src="{{asset('/storage/ProfilePictures/avatar.gif')}}" class="avatar">
+            
+@else
+<img src="{{asset('/storage/'.session()->get('u_profile_pic'))}}" class="avatar">
+@endif
+
+            
+            <br><br><br><br><br>
             <h1>Profile</h1>
                 
                <h2>ID: {{session()->get('u_id')}}</h2>
@@ -60,7 +68,7 @@ Profile
                 </h3>
                 
                 <h2>Address 2:</h2>
-                <input type="text"  name="u_address2" placeholder="Enter Address 2"  value="/storage/{{session()->get('u_profile_pic')}}" >
+                <input type="text"  name="u_address2" placeholder="Enter Address 2"  value="{{session()->get('u_address2')}}" >
                 <h3>
                 @if ($errors->has('u_address2'))
                 {{ $errors->first('u_address2') }}

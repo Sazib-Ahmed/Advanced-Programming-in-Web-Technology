@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class UserLoginController extends Controller
 {
@@ -65,9 +66,19 @@ class UserLoginController extends Controller
         else
         {
         
-            $user = DB::table('users')->where('u_email', $request->u_email)->first();
+            $user = DB::table('users')->where('u_email', $request->u_email)->first();//Users::find($request->u_email);
 
-            if(trim($user->u_email) == trim($request->u_email) && trim($user->u_password) == trim($request->u_password))
+            //
+            $loginerrors="Oops, Wrong Inputs.";
+            if(empty($user->u_email ))
+            {
+                return back()->with([ 'loginerrors' => $loginerrors ]);
+
+            }
+            else{
+
+
+                if(trim($user->u_email) == trim($request->u_email) && trim($user->u_password) == trim($request->u_password))
             {
                 $request->session()->put("u_id",$user->u_id);
                 $request->session()->put("u_name",$user->u_name);
@@ -85,9 +96,18 @@ class UserLoginController extends Controller
 
             }
             else{
-                $output="Wrong Info";
-                return $output;
+                return back()->with([ 'loginerrors' => $loginerrors ]);
             }
+
+
+            }
+
+
+                
+
+            
+
+            
 
         }
        

@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->dateTime('updated_at');
             $table->string('u_name', 100);
             $table->date('u_dob');
-            $table->integer('u_age', 3);
-            $table->integer('u_phone', 11);
+            $table->string('u_age', 3);
+            $table->string('u_phone', 11);
             $table->text('u_address1', 100);
             $table->text('u_address2', 100)->nullable();
             $table->string('u_email', 100);

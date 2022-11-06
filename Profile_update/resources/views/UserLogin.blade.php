@@ -14,6 +14,7 @@
             {{csrf_field()}}
 
   <h1>Login</h1>
+  <h3> {{session()->get('loginerrors')}}</h3>
   <input type="text" name="u_email" placeholder="Enter your email" value="{{old('u_email')}}" require autofocus>
   <h3>@if ($errors->has('u_email'))
                 {{ $errors->first('u_email') }}

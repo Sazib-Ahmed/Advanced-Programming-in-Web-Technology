@@ -6,6 +6,7 @@ use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\ProfileUpdateController;
 use App\Http\Controllers\BackgroundController;
+use App\Http\Controllers\UserFeedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,10 @@ Route::get('/background1', [BackgroundController::class,'getBackground1']);
 Route::get('/background2', [BackgroundController::class,'getBackground2']);
 Route::get('/background3', [BackgroundController::class,'getBackground3']);
 Route::get('/backgrounddefault', [BackgroundController::class,'getBackgroundDefault']);
+
+
+Route::get('/user/feedback', [UserFeedbackController::class,'getFeedback']);
+Route::post('/user/sendFeedback', [UserFeedbackController::class,'getSendFeedback']);
 
 
 
